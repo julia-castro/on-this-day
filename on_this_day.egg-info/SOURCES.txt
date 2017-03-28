@@ -1,8 +1,10 @@
 MANIFEST.in
 on_this_day/__init__.py
+on_this_day/forms.py
 on_this_day/on_this_day.py
 on_this_day.egg-info/PKG-INFO
 on_this_day.egg-info/SOURCES.txt
 on_this_day.egg-info/dependency_links.txt
 on_this_day.egg-info/requires.txt
 on_this_day.egg-info/top_level.txt
+on_this_day/templates/list_articles.html
