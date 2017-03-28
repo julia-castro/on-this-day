@@ -1,0 +1,24 @@
+<!doctype html>
+<title>On This Day</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div id='page'>
+  <h1>on this day</h1>
+  <form method="POST" action="/">
+    <div>{{ form.date }}</div>
+    <div>{{ form.submit }}</div>
+  </form>
+  {% if form.date.errors %}
+    <ul>
+      {% for error in form.date.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {% if sections %}
+    <ul class='sections'>
+      {% for key, value in sections.items() %}
+        <li>{{ key }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
