@@ -1,0 +1,47 @@
+.base {
+  font-family: "garamond-premier-pro", "Cochin", "Baskerville", 'Palatino', "Times New Roman", 'serif';
+  text-align: center;
+}
+
+#header {
+  color: #212121;
+  font-size:1.2em;
+  line-height: 1.25em;
+  letter-spacing: .125em;
+  margin-top: 5%;
+}
+
+input[type='submit'] {
+  margin-top: 10px
+}
+
+#errors {
+  font-size: .75em;
+  line-height: 1.4em;
+  text-transform: uppercase;
+  letter-spacing: .075em;
+  color: red;
+}
+
+ul {
+  padding: 0;
+  text-align: center;
+  margin-top: 33px;
+}
+
+li {
+  display: inline;
+  font-family: "Avenir Next", "Avenir", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  font-size: 0.7em;
+  line-height: 1.4em;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin: 0 5px;
+  color: #0091EA;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+li:hover {
+  color: #00B0FF;
+}
