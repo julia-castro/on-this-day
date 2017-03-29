@@ -15,7 +15,7 @@ app.config.update(dict(
 @app.route('/', methods=['GET', 'POST'])
 def show_articles():
   form = DateForm()
-  sections = None
+  data = None
 
   if request.method == 'POST' and form.validate():
     day = form.date.data.day
@@ -26,15 +26,15 @@ def show_articles():
     date =  year + month + day
 
     r = requests.get('https://api.nytimes.com/svc/search/v2/articlesearch.json', params={'api-key': app.config['SECRET_KEY'], 'begin_date': date, 'end_date': date})
-    data = r.json()['response']['docs']
+    r = r.json()['response']['docs']
 
-    sections = {}
-    for x in data:
+    data = {'sections': [], 'articles': []}
+    for x in r:
       section_name = 'Misc' if x['section_name'] is None else x['section_name']
-      if section_name not in sections:
-        sections[section_name] = [{'headline': x['headline'], 'pub_date': x['pub_date'], 'lead_paragraph': x['lead_paragraph'], 'byline': x['byline']}]
-      else:
-        sections[section_name].append({'headline': x['headline'], 'pub_date': x['pub_date'], 'lead_paragraph': x['lead_paragraph'], 'byline': x['byline']})
-    print(sections)
+      if section_name not in data['sections']:
+        data['sections'].append(section_name)
 
-  return render_template('list_articles.html', form=form, sections=sections)
+      data['articles'].append({'headline': x['headline'], 'pub_date': x['pub_date'], 'lead_paragraph': x['lead_paragraph'], 'byline': x['byline'], 'section': section_name})
+    print(data)
+
+  return render_template('list_articles.html', form=form, data=data)

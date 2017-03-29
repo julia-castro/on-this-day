@@ -1,24 +1,38 @@
 <!doctype html>
 <title>On This Day</title>
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
-<div id='page'>
-  <h1>on this day</h1>
-  <form method="POST" action="/">
-    <div>{{ form.date }}</div>
-    <div>{{ form.submit }}</div>
-  </form>
+<body>
+  <h1 id='header' class='base'>ON THIS DAY</h1>
+  <div id='form-container' class='base'>
+    <form method="POST" action="/">
+      <div>{{ form.date }}</div>
+      <div>{{ form.submit }}</div>
+    </form>
+  </div>
   {% if form.date.errors %}
+  <div id='errors' class='base'>
+    {% for error in form.date.errors %}
+      <p>{{ error }}</p>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if data %}
     <ul>
-      {% for error in form.date.errors %}
-        <li>{{ error }}</li>
+      {% for x in data.sections %}
+        <li>{{ x }}</li>
       {% endfor %}
     </ul>
+
+      <!-- {% for x in data.articles %}
+        <div class={{ x.section }}>
+          <p>{{ x.headline.main }}</p>
+          {% if x.byline.original %}
+            <p>{{ x.byline.original }}</p>
+          {% else %}
+            <p>original byline not in archive</p>
+          {% endif %}
+          <p>{{ x.lead_paragraph }}</p>
+        </div>
+      {% endfor %} -->
   {% endif %}
-  {% if sections %}
-    <ul class='sections'>
-      {% for key, value in sections.items() %}
-        <li>{{ key }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-</div>
+</body>
