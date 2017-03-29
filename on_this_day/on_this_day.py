@@ -34,7 +34,6 @@ def show_articles():
       if section_name not in data['sections']:
         data['sections'].append(section_name)
 
-      data['articles'].append({'headline': x['headline'], 'pub_date': x['pub_date'], 'lead_paragraph': x['lead_paragraph'], 'byline': x['byline'], 'section': section_name})
-    print(data)
+      data['articles'].append({'headline': x['headline'], 'pub_date': x['pub_date'], 'lead_paragraph': x['lead_paragraph'], 'byline': x['byline'], 'section': section_name, 'url': x['web_url']})
 
   return render_template('list_articles.html', form=form, data=data)

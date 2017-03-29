@@ -1,6 +1,10 @@
 <!doctype html>
 <title>On This Day</title>
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<head>
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="{{ url_for('static', filename='list_articles.js') }}"></script>
+</head>
 <body>
   <h1 id='header' class='base'>ON THIS DAY</h1>
   <div id='form-container' class='base'>
@@ -19,20 +23,21 @@
   {% if data %}
     <ul>
       {% for x in data.sections %}
-        <li>{{ x }}</li>
+        <li class='tab' data-section={{ x}} >{{ x }}</li>
       {% endfor %}
     </ul>
-
-      <!-- {% for x in data.articles %}
-        <div class={{ x.section }}>
-          <p>{{ x.headline.main }}</p>
-          {% if x.byline.original %}
-            <p>{{ x.byline.original }}</p>
-          {% else %}
-            <p>original byline not in archive</p>
-          {% endif %}
-          <p>{{ x.lead_paragraph }}</p>
-        </div>
-      {% endfor %} -->
+    {% for x in data.articles %}
+      <div class='article-information base hide' data-section={{  x.section }}>
+        <a class='title' href={{ x.url }}>{{ x.headline.main }}</a>
+        {% if x.lead_paragraph %}
+          <p class='lead-paragraph'>{{ x.lead_paragraph }}</p>
+        {% endif %}
+        {% if x.byline.original %}
+          <p class='byline'>{{ x.byline.original }}</p>
+        {% else %}
+          <p class='byline'> original byline not in archive </p>
+        {% endif %}
+      </div>
+    {% endfor %}
   {% endif %}
 </body>

@@ -27,6 +27,7 @@ ul {
   padding: 0;
   text-align: center;
   margin-top: 33px;
+  margin-bottom: 50px
 }
 
 li {
@@ -42,6 +43,39 @@ li {
   cursor: pointer;
 }
 
-li:hover {
+li:hover, .article-information .title:hover  {
   color: #00B0FF;
+  text-decoration: underline
+}
+
+.article-information {
+  margin: 0 350px 50px 350px;
+}
+
+.article-information .title {
+  font-size: 1.5em;
+  line-height: 1.4em;
+  color: #0091EA;
+  cursor: pointer;
+}
+
+.article-information .byline {
+  text-transform: capitalize;
+  font-size: .85em;
+  line-height: 1.4em;
+  letter-spacing: .075em;
+}
+
+.article-information .lead-paragraph {
+  font-size: .95em;
+  line-height: 1.4em;
+  font-style: italic;
+}
+
+a {
+  text-decoration: none
+}
+
+.hide {
+  display: none
 }
