@@ -1,0 +1,11 @@
+click==6.7
+Flask==0.12
+Flask-WTF==0.14.2
+gunicorn==19.7.1
+itsdangerous==0.24
+Jinja2==2.9.5
+MarkupSafe==1.0
+-e git+https://github.com/julia-castro/on-this-day.git@0177fd13149ae386f956df75c1cd6c27997ba226#egg=on_this_day-heroku_master
+requests==2.13.0
+Werkzeug==0.12.1
+WTForms==2.1
